@@ -4,6 +4,7 @@ import { connectDB, disconnectDB } from "./config/db.js";
 
 // Import routes
 import movieRoutes from "./routes/movieRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
 config();
 connectDB();
@@ -17,6 +18,7 @@ app.get("/hello", (req, res) => {
 
 // API Routes
 app.use("/movies", movieRoutes);
+app.use("/auth", authRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server listening on http://localhost:${PORT}`);
