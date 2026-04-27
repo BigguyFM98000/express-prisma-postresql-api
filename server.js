@@ -2,15 +2,20 @@ import express from "express"; // How to import a package
 import {config} from "dotenv";
 import { connectDB, disconnectDB } from "./config/db.js";
 
+
 // Import routes
 import movieRoutes from "./routes/movieRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 
+const PORT = 5001; // The port which the server will listen on
 config();
 connectDB();
 
 const app = express(); // An instance of an express server
-const PORT = 5001; // The port which the server will listen on
+
+// Body parsing middlewares
+app.use(express.json());
+// app.use(express.urlencoded({extended: true}));
 
 app.get("/hello", (req, res) => {
     res.json({message: "Hello, World!"});
